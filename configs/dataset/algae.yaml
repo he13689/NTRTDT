@@ -1,0 +1,12 @@
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train: E:\python\powergrid\data2\JPEGImages\train  # 118287 images
+val: E:\python\powergrid\data2\JPEGImages\val  # 5000 images
+
+# number of classes
+nc: 34
+
+# class names
+names: [ '断股', '散股', '风筝', '气球', '布条', '树枝', '其他', '绝缘子', '防震锤', '预绞丝线夹',
+         '保护线', '防震条', '厂房', '自建房', '遮阳膜', '运输车', '水体', '薄膜', '杆塔', '高速公路',
+         '地膜', '吊车', '施工地', '推土机', '塔吊', '铁路', '商品房', '在建房', '挖掘机', '塔材',
+         '薄膜、', '塔基', '飘挂物',]

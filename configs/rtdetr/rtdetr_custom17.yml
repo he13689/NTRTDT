@@ -1,0 +1,29 @@
+__include__: [
+  '../dataset/coco_detection.yml',
+  '../runtime.yml',
+  './include/dataloader.yml',
+  './include/optimizer.yml',
+  './include/custom17.yml',  # FPN-PAN to PAN,num_decoder_layers has changed from 6 to 4
+]
+
+YOLOBackbone:
+  # add SPD Conv,use v7 backbone
+  cfg: 'configs/rtdetr/include/custom17_backbone.yml'
+
+train_dataloader:
+  batch_size: 4
+  num_workers: 4
+
+use_amp: False
+epoches: 200
+
+
+optimizer:
+  params:
+    - params: 'backbone'
+      lr: 0.00002
+
+  lr: 0.00005
+
+#output_dir: ./output/custom24
+output_dir: ./output/test3

@@ -1,0 +1,30 @@
+# 改进 IoU loss计算方法， 预计使用 InnerMPDIoU 代替原有IoU。 MPDIoU是基于水平矩形的最小点距离来计算的，能够综合考虑重叠区域、中心点距离以及宽度和高度的偏差。
+# 轻量级下采样方法ContextGuided 改进backbone的Conv，backbone使用
+
+__include__: [
+  '../dataset/power_grid.yml',
+  '../runtime.yml',
+  './include/dataloader.yml',
+  './include/optimizer.yml',
+  './include/pgrtv2.yml',
+]
+
+RTDETR:
+  multi_scale: [576, 608, 640, 640, 640, 672, 704, 736, 768, 800, 832, 864, 896, 928, 960, 960 ]
+
+train_dataloader:
+  batch_size: 8
+  num_workers: 4
+
+use_amp: False
+epoches: 200
+
+
+optimizer:
+  params:
+    - params: 'backbone'
+      lr: 0.00002
+
+  lr: 0.00005
+
+output_dir: ./result/pgrt2
